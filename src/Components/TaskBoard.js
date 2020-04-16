@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 
 class TaskBoard extends React.Component {
@@ -16,8 +17,16 @@ class TaskBoard extends React.Component {
             <div className="card-body">
                 <h5 className="card-title">{task.title}</h5>
                 <h6 className="card-subtitle mb-2 text-muted">ID: {task.id}</h6>
+                <button onClick={this.updateTasks} id={task.id}>Add</button>
             </div>
         </div> : null
+    }
+
+    updateTasks = (event) => {
+        let newList = this.props.tasks;
+        let index = this.props.tasks.findIndex(task => task.id == parseInt(event.target.id))
+        newList[index].status = this.props.tasks[index].status !== 3 ? this.props.tasks[index].status + 1 : this.props.tasks[index].status
+        this.props.updateTaskList(newList)
     }
 
     render() {

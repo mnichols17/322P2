@@ -22,6 +22,12 @@ class App extends React.Component {
     .catch(error => console.log(error))
   }
 
+  updateTaskList = (newTasks) => {
+      this.setState({
+          tasks: newTasks
+      })
+  }
+
   render(){
     return (
       <div className="container-fluid" id="view">
@@ -29,7 +35,7 @@ class App extends React.Component {
           <div className="mt-3">
             <Switch>
                 <Route path="/">
-                  <TaskBoard tasks={this.state.tasks} />
+                  <TaskBoard tasks={this.state.tasks} updateTaskList={this.updateTaskList}/>
                 </Route>
             </Switch>
           </div>
