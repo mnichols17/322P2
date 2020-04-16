@@ -26,10 +26,6 @@ class TaskBoard extends React.Component {
 
     moveCardText = (status, id) => {
         switch(status){
-            case(0):
-                return <div>
-                    <a href="#" onClick={this.addStatus} id={id}>Start Work &gt;&gt;</a>
-                </div>
             case(1):
                 return <div>
                     <a href="#" onClick={this.subStatus} id={id}>&lt;&lt; Send Back</a>
@@ -46,6 +42,10 @@ class TaskBoard extends React.Component {
                 return <div>
                     <a href="#" onClick={this.subStatus} id={id}>&lt;&lt; Request Re-Review</a>
                 </div>
+            default:
+                return <div>
+                    <a href="#" onClick={this.addStatus} id={id}>Start Work &gt;&gt;</a>
+                </div>
         }
     }
 
@@ -55,6 +55,7 @@ class TaskBoard extends React.Component {
             <div className="card-body">
                 <h5 className="card-title">{task.title}</h5>
                 <h6 className="card-subtitle mb-2 text-muted">ID: {task.id}</h6>
+                <h6 className="card-subtitle mb-2 text-muted">Type: {task.type}</h6>
                 {this.moveCardText(task.status, task.id)}
             </div>
         </div> : null
