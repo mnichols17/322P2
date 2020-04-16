@@ -13,7 +13,7 @@
 }
 
 #addTask {
-    width: 30%;
+    width: 50%;
 }
 
 #taskBoard {
@@ -41,5 +41,9 @@ a:hover {
 
     #taskBoard {
         background: #EFEFEF;
+    }
+
+    #addTask {
+        width: 100%;
     }
   }

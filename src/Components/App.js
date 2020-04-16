@@ -1,5 +1,5 @@
 import React from 'react';
-import { matchPath, Link, BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import { Link, BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import axios from 'axios';
 
 import TaskBoard from './TaskBoard';
