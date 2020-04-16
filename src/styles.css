@@ -7,6 +7,10 @@
     width: 80%;
 }
 
-#col0 {
-    background: darkgray;
+#col1, #col3 {
+    background: #EFEFEF
+}
+
+#col0, #col2 {
+    background: #DEDEDE
 }
