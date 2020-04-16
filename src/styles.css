@@ -2,6 +2,16 @@
     width: 100%;
 }
 
+.navLink {
+    margin: 2%;
+    font-size: 150%;
+    color: black;
+}
+
+.navLink:hover {
+    color: lightcoral;
+}
+
 #addTask {
     width: 30%;
 }

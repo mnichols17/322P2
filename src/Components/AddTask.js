@@ -15,7 +15,9 @@ class AddTask extends React.Component {
 
     addToTasks = (event) => {
         event.preventDefault()
-        console.log(this.state)
+        let newList = this.props.tasks;
+        newList.push({"id": newList.length + 1, "title": this.state.title, "type": this.state.type, status: 0})
+        this.props.history.push("/");
     }
 
 
