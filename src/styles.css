@@ -1,0 +1,12 @@
+.container-fluid {
+    width: 100%;
+}
+
+#taskBoard {
+    border: black 2px solid;
+    width: 80%;
+}
+
+#col0 {
+    background: darkgray;
+}
