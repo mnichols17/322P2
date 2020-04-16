@@ -14,3 +14,8 @@
 #col0, #col2 {
     background: #DEDEDE
 }
+
+a:hover {
+    color: lightskyblue;
+    text-decoration: none;
+}
