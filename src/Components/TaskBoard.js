@@ -1,8 +1,28 @@
 import React from 'react';
-import axios from 'axios';
-
 
 class TaskBoard extends React.Component {
+
+    state = {
+        mobile: false,
+        view: 0
+    }
+
+    componentDidMount = () => {
+        window.addEventListener('resize', this.handleResize);
+        this.handleResize();
+    }
+
+    handleResize = () => {
+        this.setState({
+            mobile: window.innerWidth < 750 
+        })
+    }
+
+    handleView = (event) => {
+        this.setState({
+            view: parseInt(event.target.value)
+        })
+    }
 
     moveCardText = (status, id) => {
         switch(status){
@@ -10,32 +30,28 @@ class TaskBoard extends React.Component {
                 return <div>
                     <a href="#" onClick={this.addStatus} id={id}>Start Work &gt;&gt;</a>
                 </div>
-                break;
             case(1):
                 return <div>
                     <a href="#" onClick={this.subStatus} id={id}>&lt;&lt; Send Back</a>
                     <br />
                     <a href="#" onClick={this.addStatus} id={id}>Request Review &gt;&gt;</a>
                 </div>
-                break;
             case(2):
                 return <div>
                     <a href="#" onClick={this.subStatus} id={id}>&lt;&lt; More Work Required</a>
                     <br />
                     <a href="#" onClick={this.addStatus} id={id}>Mark Done &gt;&gt;</a>
                 </div>
-                break;
             case(3):
                 return <div>
                     <a href="#" onClick={this.subStatus} id={id}>&lt;&lt; Request Re-Review</a>
                 </div>
-                break;
         }
     }
 
     renderCard = (task, status) => {
         return task.status === status ? 
-        <div className="card my-2" key={task.id}>
+        <div className="card my-2 mx-auto" key={task.id}>
             <div className="card-body">
                 <h5 className="card-title">{task.title}</h5>
                 <h6 className="card-subtitle mb-2 text-muted">ID: {task.id}</h6>
@@ -59,7 +75,20 @@ class TaskBoard extends React.Component {
     }
 
     render() {
-        return (
+        return ( this.state.mobile ? 
+            <div>
+                <label htmlFor="view">Choose a column to view:</label>
+                <select onChange={this.handleView} className="form-control" id="view">
+                    <option value="0">To Do</option>
+                    <option value="1">In Progress</option>
+                    <option value="2">Review</option>
+                    <option value="3">Done</option>
+                </select>
+                <div className="container-fluid mt-2" id="taskBoard">
+                    {this.props.tasks.map(task => this.renderCard(task, this.state.view))}
+                </div>
+            </div> 
+            :
             <div className="container-fluid" id="taskBoard">
                 <div className="row">
                     <div className="col" id="col0">

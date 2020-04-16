@@ -19,3 +19,13 @@ a:hover {
     color: lightskyblue;
     text-decoration: none;
 }
+
+@media only screen and (max-width: 750px) {
+    .card {
+      width: 70%;
+    }
+
+    #taskBoard {
+        background: #EFEFEF;
+    }
+  }
